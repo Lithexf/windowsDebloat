@@ -8,6 +8,12 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 Write-Host "Starting Windows 11 Debloat & AI Removal..." -ForegroundColor Cyan
 Write-Host "----------------------------------------------" -ForegroundColor Cyan
 
+# 0. Set System Execution Policy Permanently
+Write-Host "Setting system Execution Policy to allow running local scripts..." -ForegroundColor Yellow
+Set-ExecutionPolicy RemoteSigned -Scope LocalMachine -Force
+Write-Host "[SUCCESS] System Execution Policy permanently set to RemoteSigned." -ForegroundColor Green
+Write-Host "----------------------------------------------" -ForegroundColor Cyan
+
 # 1. Disable Cortana and Bing Search
 Write-Host "Disabling Cortana and Bing Search..." -ForegroundColor Yellow
 $SearchKey = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search"
@@ -57,3 +63,4 @@ Write-Host "----------------------------------------------" -ForegroundColor Cya
 Pause
 
 Write-Host "All tasks completed successfully! Please restart your computer to apply all changes." -ForegroundColor Black -BackgroundColor Green
+Pause
